@@ -2,9 +2,9 @@
 
 import gulp from 'gulp';
 import browserify from 'browserify';
-import tsify from 'tsify';
 import source from 'vinyl-source-stream';
 import watchify from 'watchify';
+import babelify from 'babelify';
 
 
 gulp.task('default', () => {
@@ -15,13 +15,12 @@ gulp.task('browserify', () => {
     "use strict";
 
     var b = browserify({
-        //entries: './entry.js',
+        entries: './src/main.js',
         debug: true
     });
 
     return b
-        .add('./index.ts')
-        .plugin('tsify', { noImplicitAny: true})
+        .transform(babelify)
         .bundle()
         //.pipe(source)
         //.pipe(buffer())
