@@ -1,0 +1,8 @@
+var gulp = require('gulp');
+
+gulp.task('default', function() {
+
+});
+
+require('babel/register');
+require('./gulpfile.es6.js');
